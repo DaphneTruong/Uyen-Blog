@@ -1,0 +1,39 @@
+{{page-title "The Blog"}}
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container">
+        <LinkTo @route='index' class="nav-link py-lg-2 logo">The Blog</LinkTo>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto py-4 py-lg-0">
+            <li class="nav-item"><LinkTo @route='index' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Home</LinkTo></li>
+            <li class="nav-item"><LinkTo @route='about' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">About</LinkTo></li>
+            <li class="nav-item"><LinkTo @route='posts' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Posts</LinkTo></li>
+            {{#if this.session.isAuthenticated}}
+            {{#if this.session.data.authenticated.user.isAdmin}}
+            <li class="nav-item"><LinkTo @route='authenticated.users' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">User List</LinkTo></li>
+            {{/if}}
+            <li class="nav-item"><LinkTo @route='authenticated.profile' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Profile</LinkTo></li>
+            {{else}}
+            <li class="nav-item"><LinkTo @route='register' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Register</LinkTo></li>
+            <li class="nav-item"><LinkTo @route='login' class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Login</LinkTo></li>
+            {{/if}}
+
+            {{#if this.session.isAuthenticated}}
+            <li class="nav-item"><a href="#" {{on "click" this.invalidateSession}} class="nav-link px-lg-3 py-3 py-lg-2 ember-nav">Logout</a></li>
+            {{/if}}
+            <li class="nav-item"><LinkTo @route='authenticated.createPost' class="nav-link btn btn-ember text-white">Write a post</LinkTo></li>
+          </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+  {{outlet}}
+</main>
+
+<footer>
+</footer>

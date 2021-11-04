@@ -1,0 +1,50 @@
+{{#if this.isShowingModal}}
+<ModalDialog @onClose={{this.toggleModal}} @targetAttachment="center" @translucentOverlay=true>
+  Do you truely and honestly want to delete this user?
+  <button class="btn" type="button" {{on "click" (fn this.deleteUser user)}}>Yes</button>
+  <button class="btn btn-info" type="button" {{on "click" this.toggleModal}}>No</button>
+</ModalDialog>
+{{/if}}
+{{page-title "User List"}}
+<div class="container">
+  <h1>User List</h1>
+  {{#if this.model}}
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th class="text-center">User Id</th>
+        <th class="text-center">First Name</th>
+        <th class="text-center">Last Name</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Birthday</th>
+        <th class="text-center">Is admin</th>
+        <th class="text-center">Buttons</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.model as |user|}}
+      <tr class="p-3">
+        <td class="p-3">{{user.id}}</td>
+
+        <td class="p-3"> {{user.firstname}}</td>
+
+        <td class="p-3"> {{user.lastname}}</td>
+
+        <td class="p-3">{{user.email}}</td>
+
+        <td class="p-3">{{user.date}}</td>
+
+        <td class="p-3">{{user.isAdmin}}</td>
+
+        <td>
+          <button class="btn mb-2" {{on "click" (fn this.showModal user)}}>Delete</button>
+          <LinkTo @route='authenticated.users.editUser' @model={{user.id}} class="btn btn-ember text-white mb-2">Edit</LinkTo>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+  <div>There is no user in the list.</div>
+  {{/if}}
+</div>

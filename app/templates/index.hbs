@@ -1,0 +1,63 @@
+{{page-title "Home"}}
+<div class="home-page">
+  <div class="hero-image">
+    <div class="container">
+      <div class="hero-para">
+        <h2 class="home-head text-white">Where you can share your days.</h2>
+        {{#unless this.session.isAuthenticated}}
+        <LinkTo @route='login' class="btn btn-white">Login</LinkTo>
+        {{/unless}}
+      </div>
+    </div>
+
+  </div>
+
+  <div class="top-curve"></div>
+  <div class="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <h2 class="home-head">Time to write and smile!</h2>
+            {{#if this.session.isAuthenticated}}
+            <LinkTo @route='authenticated.createPost' class="btn btn-ember text-white">Write your post</LinkTo>
+            {{else}}
+            <LinkTo @route='register' class="btn btn-ember text-white">Sign up</LinkTo>
+            {{/if}}
+
+          </div>
+        </div>
+        <div class="col-6 home-img">
+          <img alt="" src="assets/imgs/note.jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-curve"></div>
+
+  <PageStructure>
+    <h1>The Blog</h1>
+    {{#each this.posts as |post|}}
+    <div class="posts-container">
+      <LinkTo @route="post" @model={{post.id}} class="post-list">
+        <div class="d-flex post-container">
+          <div class="post-img">
+            <img src="{{post.image}}" alt="" />
+          </div>
+          <div class="post-content">
+            <h2 class="post-title">{{post.title}}</h2>
+            <div class="published-at">
+              {{post.publishedAt}}<br />
+              <span class="author">{{post.author.fulname}}</span><br />
+              <span class="tag">{{post.tag}}</span>
+            </div>
+            <div class="post-body">{{post.body}}</div>
+          </div>
+        </div>
+      </LinkTo>
+    </div>
+    {{/each}}
+    <LinkTo @route='posts' class="btn btn-ember mt-2 text-white">More Posts</LinkTo>
+  </PageStructure>
+</div>
+

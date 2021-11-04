@@ -1,0 +1,38 @@
+{{page-title "Update Post"}}
+{{#if this.isShowingModal}}
+<ModalDialog @onClose={{this.toggleModal}} @targetAttachment="center" @translucentOverlay=true>
+  You will lost your edit if you leave. Do you still want to go?
+  <button class="btn" type="button" {{on "click" this.rollBack}}>Yes</button>
+  <button class="btn btn-info" type="button" {{on "click" this.toggleModal}}>No</button>
+</ModalDialog>
+{{/if}}
+<div class="container">
+  <h1>Edit your post</h1>
+  <form {{on "submit" this.updatePost}}>
+    <div class="form-group">
+      <label for="post-title">Post Title<span class="text-danger">*</span></label>
+      <Input @type="text" class="form-control" id="post-title" @value={{this.model.title}} {{on 'change' (fn this.validInput 'title')}} />
+      <span class="text-danger">{{this.emptytitle}}</span>
+    </div>
+
+    <div class="form-group">
+      <label for="img">Post's Image Link<span class="text-danger">*</span></label>
+      <Input @type="text" class="form-control" id="img" @value={{this.imageUrl}} {{on 'change' (fn this.validInput 'image')}} />
+      <span class="text-danger">{{this.emptyimage}}</span>
+      <span class="text-danger">{{this.errors}}</span>
+    </div>
+
+    <div class="form-group">
+      <label for="post-body">Post Body<span class="text-danger">*</span></label>
+      <Textarea class="form-control" id="post-body" @rows="8" @cols="80" @value={{this.model.body}} {{on 'change' (fn this.validInput 'body')}}></Textarea>
+      <span class="text-danger">{{this.emptybody}}</span>
+    </div>
+
+    <div class="form-group">
+      <label for="tag">Tag Name <span class="text-danger">*</span></label>
+      <Input @type="text" class="form-control" id="tag" @value={{this.model.tag}} @disabled="disabled" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="submit">Update</button>
+  </form>
+</div>

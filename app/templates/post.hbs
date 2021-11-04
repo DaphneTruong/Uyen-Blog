@@ -1,0 +1,45 @@
+{{page-title "Post Page"}}
+
+{{#if this.isShowingModal}}
+<ModalDialog @onClose={{this.toggleModal}} @targetAttachment="center" @translucentOverlay=true>
+  Do you truely and honestly want to delete this post?
+  <button class="btn" type="button" {{on "click" (fn this.deletePost this.post)}}>Yes</button>
+  <button class="btn btn-info" type="button" {{on "click" this.toggleModal}}>No</button>
+</ModalDialog>
+{{/if}}
+
+<div class="post-details-image">
+  <img src="{{this.model.image}}" onerror="this.src='/assets/imgs/brokeImgLink.png'" alt="Post Image" />
+</div>
+
+<div class="container post-page">
+  <h1>{{this.model.title}}</h1>
+  <div class="post-details-body">
+    {{this.model.body}}
+  </div>
+  <div class="italic mt-2">
+    <span class="date">{{this.model.publishedAt}}</span>
+    <span class="author">{{this.model.fullname}}</span>
+  </div>
+
+  <div class="btns">
+    <div>
+      <LinkTo @route="posts" class="btn btn-white">Back to posts</LinkTo>
+    </div>
+    <div class="edit-del">
+      {{#if this.session.isAuthenticated}}
+      {{#if (or this.isAdmin this.isAuthor)}}
+      <button type="button" class="btn" {{on "click" (fn this.showModal this.model)}}>
+        Delete
+      </button>
+      <LinkTo @route="authenticated.updatePost" @model={{this.model.id}} class="btn btn-ember text-white">Edit Post</LinkTo>
+      {{/if}}
+      {{/if}}
+    </div>
+
+  </div>
+</div>
+
+
+
+

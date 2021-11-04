@@ -1,0 +1,80 @@
+{{page-title "Posts"}}
+{{#if this.isShowingModal}}
+<ModalDialog @onClose={{this.toggleModal}} @targetAttachment="center" @translucentOverlay=true>
+  Do you truely and honestly want to delete this post?
+  <button class="btn" type="button" {{on "click" (fn this.deletePost post)}}>Yes</button>
+  <button class="btn btn-info" type="button" {{on "click" this.toggleModal}}>No</button>
+</ModalDialog>
+{{/if}}
+
+<PageStructure>
+  <h1>Posts</h1>
+  <!--Filter-->
+  <div class="filter form-group">
+    <div class="form-group">
+      <label for="filterAuthor">Author</label>
+      <select class="form-select form-control" aria-label="Default select example" name="filterAuthor" id="filterAuthor" {{on "change" (fn this.filter 'author')}}>
+        <option value="">No filter</option>
+        {{#each this.users as |user|}}
+        <option value="{{user.id}}">{{user.firstname}} {{user.lastname}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="filterTag">Tag Name</label>
+      <select class="form-select form-control" aria-label="Default select example" name="filterTag"
+              id="filterTag"
+              {{on "change" (fn this.filter 'tag')}}>
+        <option value="">No filter</option>
+        <option value="Weather">Weather</option>
+        <option value="Foods">Foods</option>
+        <option value="Minimalism">Minimalism</option>
+      </select>
+    </div>
+
+  </div>
+
+  {{#if this.pagedContent}}
+  {{#each this.pagedContent as |post|}}
+  <div class="posts-container">
+    <LinkTo @route="post" @model={{post.id}} class="post-list">
+      <div class="d-flex post-container">
+        <div class="post-img">
+              <img src="{{post.image}}" onerror="this.src='/assets/imgs/brokeImgLink.png'" alt="" />
+           
+        </div>
+        <div class="post-content">
+          <h2 class="post-title">{{post.title}}</h2>
+          <div class="published-at">
+            {{post.publishedAt}}
+          </div>
+          <div class="tag">
+            <span class="author ">{{concat post.author.firstname ' ' post.author.lastname}}</span>
+            <span class="tag">{{post.tag}}</span>
+          </div>
+          <div class="post-body">{{post.body}}</div>
+        </div>
+      </div>
+    </LinkTo>
+    <div class="btns">
+      {{#if this.session.isAuthenticated}}
+      {{#if this.isAdmin}}
+      <div class="edit-del">
+        <button type="button" class="btn" {{on "click" (fn this.showModal post)}}>
+          Delete
+        </button>
+        <LinkTo @route="authenticated.updatePost" @model={{post.id}} class="btn btn-ember text-white">Edit Post</LinkTo>
+      </div>
+      {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  {{/each}}
+  {{#if (not-eq this.pagedContent.totalPages 1)}}
+  <PageNumbers @content={{pagedContent}} />
+  {{/if}}
+  {{else}}
+  <div class="alert alert-info">Sorry there is no post for your filter!</div>
+  {{/if}}
+
+</PageStructure>

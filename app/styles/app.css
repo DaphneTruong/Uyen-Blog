@@ -1,0 +1,290 @@
+html,
+body {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+  margin: auto;
+  position: relative;
+  overflow-x: hidden;
+  font-size: 18px;
+}
+main {
+  width: 100vw;
+  min-height: 80vh;
+}
+h1 {
+  margin-top: 20px;
+  text-align: center;
+  color: #2a275c;
+  font-size: 4em;
+  font-weight: 600;
+}
+.logo {
+  font-family: 'Mulish', sans-serif;
+  font-size: 2em;
+  color: #e8edfa;
+}
+.navbar {
+  background-color: #2a275c;
+}
+ul.navbar-nav .nav-item .nav-link.ember-nav {
+  color: #fff;
+}
+.btn-white {
+  background-color: #fff;
+  color: #2a275c;
+  border: solid 1px #2a275c;
+  border-radius: 5px;
+}
+.btn-ember {
+  background-color: #5862a8;
+}
+.editPwdBtn {
+  background: #e8edfa;
+  border: none;
+  color: #2a275c;
+  font-weight: 700;
+}
+/*--------------Home--------------*/
+.hero-image {
+  width: 100%;
+  height: 500px;
+  background-color: black;
+  z-index: -1;
+  background-image: url("imgs/hero-img.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+.hero-image .hero-para {
+  width: 600px;
+  margin-left: 1rem;
+}
+.hero-image .hero-para .btn-white {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+}
+h2.home-head {
+  font-weight: 600;
+  font-size: 3em;
+}
+.top-curve {
+  width: 100vw;
+  height: 150px;
+  margin-top: -150px;
+  margin-bottom: -1px;
+  background-image: url("imgs/Curve-cut-01-1.png");
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.intro {
+  width: 100vw;
+  height: 350px;
+  background-color: #e8edfa;
+  border-color: #e8edfa;
+}
+.intro .col-6 {
+  display: flex;
+  align-items: center;
+}
+.intro .col-6 h2 {
+  color: #2a275c;
+}
+.intro .col-6.home-img {
+  text-align: right;
+  padding-right: 0;
+  justify-content: flex-end;
+}
+.intro .col-6.home-img img {
+  height: 350px;
+  border-radius: 50%;
+  border: 2px solid #5862a8;
+  margin-top: -30px;
+  box-shadow: inset 0 0 200px #2a275c;
+}
+.intro .btn-ember {
+  margin-top: 0.5em;
+  font-size: 1.5em;
+}
+.bottom-curve {
+  display: block;
+  width: 100vw;
+  height: 150px;
+  margin-top: -1px;
+  background-image: url("imgs/Curve-cut-02-1.png");
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+/*--------------Posts Page--------------*/
+.posts-container {
+  border-bottom: 1px solid #e8edfa;
+  margin-top: 20px;
+}
+.tag {
+  font-style: italic;
+  display: flex;
+  justify-content: space-between;
+}
+.btns {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.post-list {
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.post-list:hover {
+  color: black;
+  text-decoration: none;
+}
+.post-list .post-img {
+  width: 350px;
+}
+.post-list .post-img img {
+  width: 350px;
+}
+.post-list .published-at {
+  margin-bottom: 15px;
+}
+.post-list .post-container {
+  align-items: center;
+}
+.post-list .post-container .post-content {
+  margin-left: 15px;
+  width: calc(100% - 350px);
+}
+.post-list .post-container .published-at {
+  font-style: italic;
+  font-size: 0.8em;
+}
+.pagination-centered {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.pagination-centered .pagination {
+  text-align: center;
+}
+.pagination-centered .pagination .arrow {
+  padding: 5px 9px;
+  margin: 5px 9px;
+}
+.pagination-centered .pagination .arrow a {
+  color: #2a275c;
+}
+.pagination-centered .pagination .arrow.disabled {
+  position: absolute;
+  left: -100px;
+  transition: all ease-in-out 0.8s;
+}
+.pagination-centered .pagination .page-number {
+  display: inline-block;
+  padding: 5px 9px;
+  margin: 5px 9px;
+  background-color: #e8edfa;
+  border-radius: 5px;
+}
+.pagination-centered .pagination .page-number a {
+  color: #2a275c;
+}
+.pagination-centered .pagination .page-number.active {
+  box-shadow: -1px -1px 6px rgba(42, 39, 92, 0.5);
+}
+/*--------------Posts Details--------------*/
+.post-details-image {
+  background-color: #e8edfa;
+  width: 100vw;
+  height: 520px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-details-image img {
+  max-height: 480px;
+}
+.post-page h1 {
+  margin-top: 20px;
+}
+.post-page .italic {
+  display: flex;
+  justify-content: space-between;
+}
+.post-page .italic span {
+  font-style: italic;
+}
+.post-page .italic .author {
+  font-weight: 600;
+}
+footer {
+  margin-top: 20px;
+  width: 100vw;
+  min-height: 200px;
+  background: #2a275c;
+}
+/*--------------Modal Box--------------*/
+#modal-overlays {
+  z-index: 1000;
+}
+.ember-modal-dialog {
+  z-index: 51;
+  position: fixed;
+}
+.ember-modal-dialog.emd-in-place {
+  position: static;
+}
+.ember-modal-wrapper.emd-static.emd-wrapper-target-attachment-center .ember-modal-dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ember-modal-wrapper.emd-animatable.emd-wrapper-target-attachment-center {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ember-modal-wrapper.emd-animatable.emd-wrapper-target-attachment-center .ember-modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ember-modal-wrapper.emd-animatable .ember-modal-dialog {
+  position: relative;
+}
+.ember-modal-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+}
+.ember-modal-dialog {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #222;
+  padding: 10px;
+}
+.ember-modal-overlay.translucent {
+  background-color: rgba(128, 128, 128, 0.77);
+}

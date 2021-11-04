@@ -1,0 +1,31 @@
+{{page-title "Profile"}}
+<div class="container">
+  <h1>Profile</h1>
+  <table class="table">
+    <tr>
+      <th scope="col">First Name</th>
+      <td>{{this.model.firstname}}</td>
+    </tr>
+    <tr>
+      <th scope="col">Last Name</th>
+      <td>{{this.model.lastname}}</td>
+    </tr>
+
+    <tr>
+      <th scope="col">Email</th>
+      <td>{{this.model.email}}</td>
+    </tr>
+
+    <tr>
+      <th scope="col">Birthday</th>
+      <td>{{this.model.date}}</td>
+    </tr>
+
+    <tr>
+      <th scope="col">Is Admin</th>
+      <td>{{this.model.isAdmin}}</td>
+    </tr>
+  </table>
+
+  <LinkTo @route='authenticated.editProfile' class="btn btn-ember text-white mt-3" @model={{this.model.id}}>Edit Profile</LinkTo>
+</div>
